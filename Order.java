@@ -1,19 +1,19 @@
-package com.exampleDeskboard.deskboarddesign.model;
-
-import jakarta.persistence.*;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
 
 @Entity
 public class Order {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String product;
-    private int quantity;
+    private Long customerId;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @ElementCollection
+    private List<String> items;
 
-    // Getters and Setters
+    private Double totalAmount;
+
+    // Getters and Setters (or use Lombok @Data)
 }
